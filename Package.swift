@@ -5,52 +5,21 @@ import PackageDescription
 
 let package = Package(
     name: "SAP-SPM-POC",
+    platforms: [.iOS(.v15)],
     products: [
         .library(
             name: "SAP-SPM-POC",
-            targets: ["SAPCommon",
-                       "SAPFiori",
-                       "SAPFioriFlows",
-                       "SAPFoundation",
-                       "SAPOData",
-                       "SAPOfflineOData",]),
+            targets: ["SAP-SPM-POC"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "cloud-sdk-ios", url: "https://github.com/SAP/cloud-sdk-ios.git", from: "9.2.7"),
+    ],
+    
     targets: [
-        .binaryTarget(
-            name: "SAPCommon",
-            path: "SAPCommon.xcframework"
-        ),
-        .binaryTarget(
-            name: "SAPFiori",
-            path: "SAPFiori.xcframework"
-        ),
-        .binaryTarget(
-            name: "SAPFioriFlows",
-            path: "SAPFioriFlows.xcframework"
-        ),
-        .binaryTarget(
-            name: "SAPFoundation",
-            path: "SAPFoundation.xcframework"
-        ),
-        .binaryTarget(
-            name: "SAPOData",
-            path: "SAPOData.xcframework"
-        ),
-        .binaryTarget(
-            name: "SAPOfflineOData",
-            path: "SAPOfflineOData.xcframework"
-        ),
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SAP-SPM-POC",
-            dependencies: [
-                "SAPCommon",
-                "SAPFiori",
-                "SAPFioriFlows",
-                "SAPFoundation",
-                "SAPOData",
-                "SAPOfflineOData",
-            ]
-        )
+            dependencies: ["cloud-sdk-ios"]),
     ]
 )
