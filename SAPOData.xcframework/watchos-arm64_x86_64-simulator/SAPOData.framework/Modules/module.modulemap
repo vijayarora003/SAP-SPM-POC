@@ -1,0 +1,4 @@
+framework module SAPOData {
+  header "SAPOData-Swift.h"
+  requires objc
+}

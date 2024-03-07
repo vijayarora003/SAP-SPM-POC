@@ -1,0 +1,4 @@
+framework module SAPFoundation {
+  header "SAPFoundation-Swift.h"
+  requires objc
+}

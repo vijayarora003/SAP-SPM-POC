@@ -1,0 +1,4 @@
+framework module SAPCommon {
+  header "SAPCommon-Swift.h"
+  requires objc
+}
