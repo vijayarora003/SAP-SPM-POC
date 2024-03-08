@@ -9,17 +9,24 @@ let package = Package(
     products: [
         .library(
             name: "SAP-SPM-POC",
-            targets: ["SAP-SPM-POC"]),
+            targets: ["cloud-sdk-ios"]),
     ],
     dependencies: [
         .package(name: "cloud-sdk-ios", url: "https://github.com/SAP/cloud-sdk-ios.git", from: "9.2.7"),
     ],
-    
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "SAP-SPM-POC",
-            dependencies: ["cloud-sdk-ios"]),
+            name: "cloud-sdk-ios",
+            dependencies: [
+                .product(name: "SAPCommon", package: "cloud-sdk-ios"),
+                .product(name: "SAPFiori", package: "cloud-sdk-ios"),
+                .product(name: "SAPFioriFlows", package: "cloud-sdk-ios"),
+                .product(name: "SAPFoundation", package: "cloud-sdk-ios"),
+                .product(name: "SAPOData", package: "cloud-sdk-ios"),
+                .product(name: "SAPOfflineOData", package: "cloud-sdk-ios"),
+                .product(name: "SAPML", package: "cloud-sdk-ios"),
+            ],
+            path: "Sources"
+        ),
     ]
 )
